@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #1d8845;  
+}
+
+.nav a {
+    display: flex;
+    flex-direction: row;
+    font-family: "Bebas Neue";
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    gap: 5px;
+}
+
+.nav h4 {
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+}
+
+.nav a:hover {
+    color: black;
+}
+
+.secondContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.recipeContainer {
+    display: flex;
+    width: 1600px;
+    height: 550px;
+    box-shadow: 0px 0px 2px;
+    border-radius: 15px;
+}
+
+.detailContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    font-family: "Bebas Neue";
+    color: #1d8845;
+    background-color: white;
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 0px 15px 15px 0px;
+    font-size: 20px;
+    overflow: auto
+}
+
+
+
+
+.recipeContainer img {
+    height: 100%;
+    border-radius: 15px 0px 0px 15px;
+
+}
+

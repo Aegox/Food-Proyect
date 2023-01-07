@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 30px;
+    font-family: 'Bebas Neue';
+    color: white;
+    background-color: #1d8845;
+    padding: 3px;
+    margin-bottom: 15px
+    
+   
+}
+
+.container a {
+    margin: 15px;
+    padding: 5px;
+    transition: color 0.3s , background-color 0.3s ease
+}
+
+.container a:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #1d8845;
+    transition: color 0.3s , background-color 0.3s ease-in-out
+}
+
