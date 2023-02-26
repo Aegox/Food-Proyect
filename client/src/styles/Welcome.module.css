@@ -75,54 +75,27 @@
     border-radius: 20px;
 }
 
-.cards {
-    background-color: #1d8845;
-    width: 100%;
-    height: 700px;
-}
+@media screen and (max-width: 1280px) { 
+    .imageText {
+        width: 80%;
+        font-size: 18px;
+        margin: 0;
+        top: 320px;
+        left: 30px;
+    }
 
-.description {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    width: 100%;
-    height: 700px;
-    gap: 100px
-   
-}
+    .slider img {
+        height: 900px;
+        width: 600%;
+        
+    }
 
-.footer {
-    background-color: #1d8845;
-    width: 100%;
-    height: 250px;
-}
+    body {
+        background-image: none
+    }
 
-.text {
-    width: 50%;
-    font-family: 'Bebas Neue';
-    font-size: 35px;
-    padding-left: 20px
+    .imageText button {
+        width: 150px;
+        font-size: 20px 
+    }
 }
-.text h1 {
-    padding-bottom: 50px;
-    color: #1d8845
-}
-
-.footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Bebas Neue';
-}
-
-.footer h2 {
-    color: white;
-    padding: 30px;
-    font-size: 33px;
-   
-}
-
-    

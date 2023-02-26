@@ -3,10 +3,9 @@ const {Sequelize} = require("sequelize");
 const modelRecipe = require("./models/Recipe.js");
 const modelDiet  = require("./models/Diet.js");
 
-const {DB_USER, DB_PASSWORD, DB_HOST} = process.env;
+const {DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY} = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/Food`, {logging: false,
-});
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/Food`, {logging: false,});
 
 modelRecipe(sequelize);
 modelDiet(sequelize);

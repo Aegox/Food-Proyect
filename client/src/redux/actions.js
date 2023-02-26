@@ -6,6 +6,7 @@ export const GET_RECIPE_DETAIL = "GET_RECIPE_DETAIL";
 export const CREATE_RECIPE = "CREATE_RECIPE";
 export const FILTER_RECIPES = "FILTER_RECIPES";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const FILTER_BY_NAME = "FILTER_BY_NAME";
 
 export const getDiets = () => {
     return async (dispatch) => {
@@ -67,3 +68,10 @@ export const cleanDetail = () => {
     }
 }
 
+
+export const filterByName = (payload) => {
+    return {
+        type: FILTER_BY_NAME,
+        payload
+    }
+}

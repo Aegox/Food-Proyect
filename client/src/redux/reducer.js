@@ -5,6 +5,7 @@ import {GET_RECIPE_DETAIL} from "./actions.js";
 import {CREATE_RECIPE} from "./actions.js";
 import {FILTER_RECIPES} from "./actions.js";
 import {CLEAN_DETAIL} from "./actions.js";
+import {FILTER_BY_NAME} from "./actions.js";
 
 const initialState = {
     diets: [],
@@ -14,6 +15,10 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+    let recipesFiltered = state.allRecipes;
+    const recipes = state.recipes;
+    
+
     switch (action.type) {
         case GET_DIETS:
             return { ...state, diets: [...action.payload] };
@@ -32,13 +37,19 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                recipeDetail: {}
            }
+
+        case FILTER_BY_NAME:
+            let recipesByName = recipes.filter((recipe) => recipe.title.toLowerCase().includes(action.payload.toLowerCase()))
+            return {
+                ...state,
+                allRecipes: recipesByName
+            }
     
         case FILTER_RECIPES:
-            let recipesFiltered = state.allRecipes;
-            const recipes = state.recipes;
-            const filterValue = action.payload.toLowerCase();
-      
+            const filterValue = action.payload.toLowerCase();    
             if (filterValue === "all") {
+                recipesFiltered = recipes;
+            } else if (filterValue === "reload") {
                 recipesFiltered = recipes;
             } else if (filterValue === "on") {
                 recipesFiltered = recipesFiltered.filter((recipe) => recipe.hasOwnProperty("createinDb"))

@@ -34,9 +34,7 @@ const Recipes = () => {
                             id = {recipe.id}
                             name = {recipe.title}
                             image = {recipe.image}
-                            Diets = {recipe.createinDb ?  recipe.Diets = recipe.Diets?.map((diet) => {
-                                return diet = diet.Name 
-            }) : recipe.Diets }
+                            Diets = {recipe.createinDb ? recipe.Diets = recipe.Diets?.map((diet) => {diet = diet.Name}) : recipe.Diets }
                             healthScore = {recipe.healthScore}
                         />
                     </div>

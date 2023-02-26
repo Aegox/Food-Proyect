@@ -36,3 +36,14 @@ body {
     margin: 0
 }
 
+@media screen and (max-width: 600px) {
+   .nav {
+        width: 100%;
+        gap: 0px;
+        background-image: white;
+        
+   } 
+   .nav a {
+        margin: 10px
+   }
+}

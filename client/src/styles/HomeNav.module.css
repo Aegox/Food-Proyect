@@ -9,7 +9,22 @@
     font-size: 21px;
     width: 100%;
     height: 120px;
-    gap: 200px
+    gap: 30px;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    left:0
+    
+}
+
+
+.allContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100%
 }
 
 .container img {
@@ -25,7 +40,7 @@
 
 }
 
-.container button {
+.containerbutton {
     background-color: white;
     color: #1d8845;
     width: 120px;
@@ -82,4 +97,76 @@
     justify-content: space-between;
     align-items: center;
     gap: 40px
+}
+
+.buttonResponsive {
+    display: none
+}
+
+@media screen and (max-width: 1300px) {
+    .container {
+        width: 100%;
+        justify-content: center;
+        gap: 65%;
+
+    }
+     .orderContainer {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        justify-content: none;
+        align-items: center;
+        
+    }
+
+    .buttonResponsive {
+        display: block;
+        color: white;
+        background: none;
+        border: none;
+        font-size: 50px
+    }
+
+    .buttonResponsive:focus:not(:focus-visible) {
+        background: none;
+        border: none
+    }
+
+    .allContainer {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        background-color:#1d8845;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+        align-items: center;
+        left: 100%;
+        top: 119.1px;
+        transition: left 0.5s ease;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+   .filters {
+        flex-direction: column;
+        width: 60%;
+        justify-content: center;
+        align-items: center
+    }
+   .filter {
+        width: 100%
+   }
+  .order{
+        flex-direction: column;
+   }
+
+   .show {
+        transition:left 0.50s ease;
+        left: 0;
+        position: fixed
+
+   }
+  
+ 
 }

@@ -1,6 +1,6 @@
 //IMPORTS//
 const Router = require("express");
-const {getRecipeInformation} = require("./controllers.js");
+const getRecipeInformation = require("../controllers/getRecipeInformation.js");
 
 //Define router//
 const router = Router();
@@ -12,8 +12,8 @@ router.get("/recipes/:id", async (req, res) => {
     try {
         res.status(200).send(data);
     }
-    catch (error) {
-        console.log(error);
+   catch(error) {
+        res.status(404).send({message: error});
     }
 })
 

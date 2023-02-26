@@ -139,7 +139,7 @@ const CreateRecipe = () => {
             </div>
             <div className= {styleCreateRecipe.secondContainer}>
                 <div className= {styleCreateRecipe.createContainer}>
-                    <div className={styleCreateRecipe.header}><h1>New Recipe</h1></div>
+                    <div className={styleCreateRecipe.header}><h1>New Recpe</h1></div>
                     <div className= {styleCreateRecipe.form}>
                         <form>
                             <div className={errors.title ? styleCreateRecipe.Error : styleCreateRecipe.formInput}>

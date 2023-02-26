@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import * as actions from "../redux/actions.js";
 
 const Recipe = (props) =>  {
+    console.log(props)
     return (
         <div>
             <div className={styleRecipe.container} >

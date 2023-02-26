@@ -15,10 +15,20 @@ const HomeNav = () => {
 
     const handleSearchRecipe = (event) => {
         setNameRecipe(event.target.value)
+        
     }
-       
+    
+    const handleSearch = () => {
+        dispatch(actions.filterByName(nameRecipe))
+    }
+
     const handleFilterRecipes = (event) => {
         dispatch(actions.filterRecipes(event.target.value))
+    }
+
+    const handleButtonResponsive = () => {
+        const nav = document.querySelector('.HomeNav_allContainer__IrzKB')
+        nav.classList.toggle(HomeNavStyle.show)
     }
     
 
@@ -27,12 +37,17 @@ const HomeNav = () => {
              <Link to="/">
                 <img href="/" src="./images/makerecipes.png"/>
             </Link>
+            <button onClick={() => handleButtonResponsive()} className={HomeNavStyle.buttonResponsive}>
+               <i class="fa-solid fa-bars"></i> 
+            </button>
+            <div className={HomeNavStyle.allContainer}>
             <Link to="/CreateRecipe">
-                <button>Create Recipe</button>
+                <button className={HomeNavStyle.containerbutton}>Create Recipe</button>
             </Link>
+           
             <div className={HomeNavStyle.search}>
                 <input type="text" value= {nameRecipe} onChange= {handleSearchRecipe}/>
-                <button onClick = {() => dispatch(actions.getRecipes(nameRecipe))}>Search</button>
+                <button className={HomeNavStyle.containerbutton} onClick = {() => handleSearch()}>Search</button>
             </div>
             <div className={HomeNavStyle.orderContainer}>
                 <div className={HomeNavStyle.order}>
@@ -70,8 +85,12 @@ const HomeNav = () => {
                             <option value="off" >Off</option>
                         </select>
                     </div>
+                    <div className={HomeNavStyle.search}>
+                        <button className={HomeNavStyle.containerbutton} onClick={(e) => handleFilterRecipes(e)} value="reload" >Reload</button>
+                    </div>
 
                 </div>
+            </div>
             </div>
         </div>
     )
