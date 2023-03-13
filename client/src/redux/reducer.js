@@ -3,11 +3,18 @@ import {GET_DIETS} from "./actions.js";
 import {GET_RECIPES} from "./actions.js";
 import {GET_RECIPE_DETAIL} from "./actions.js";
 import {CREATE_RECIPE} from "./actions.js";
+import {CREATE_USER} from "./actions.js";
 import {FILTER_RECIPES} from "./actions.js";
 import {CLEAN_DETAIL} from "./actions.js";
 import {FILTER_BY_NAME} from "./actions.js";
+import {LOGIN_USER} from "./actions.js";
+import {ADD_SAVED_RECIPE} from "./actions.js";
 
 const initialState = {
+    user: {
+        auth: false,
+        token: ''
+    }, 
     diets: [],
     allRecipes: [],
     recipes: [],
@@ -31,6 +38,21 @@ const rootReducer = (state = initialState, action) => {
     
         case CREATE_RECIPE:
             return state;
+        
+        case CREATE_USER:
+            return state;
+
+        case ADD_SAVED_RECIPE:
+            return state;
+        
+        case LOGIN_USER:
+            return {
+                ...state,
+                user: {
+                    auth: action.payload.verify,
+                    token: action.payload.token
+                }
+            };
 
         case CLEAN_DETAIL: 
            return {

@@ -4,10 +4,12 @@ import * as actions from "../redux/actions.js";
 import Recipe from "./Recipe.jsx";
 import styleRecipes from "../styles/Recipes.module.css";
 import Paginated from "./Paginated.jsx";
+import ReactLoading from 'react-loading';
 
 const Recipes = () => {
     const recipes = useSelector((store) => store.allRecipes);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true)
     const [actualPage, setActualPage] = useState(1);
     const [recipesPage, setRecipesPage] = useState(9);
     const lastIndex = actualPage * recipesPage;
@@ -19,7 +21,7 @@ const Recipes = () => {
     }
 
     useEffect(() => {
-        dispatch(actions.getRecipes());
+        dispatch(actions.getRecipes()).then(() => setLoading(false))
     }, [dispatch])
 
   
@@ -27,14 +29,14 @@ const Recipes = () => {
     return (
         <div className={styleRecipes.container}>
             <Paginated recipes = {recipes.length} recipesPage = {recipesPage} setPages = {setPages}/>
-            {recipesPerPage.map((recipe) => {
+            {loading ? <ReactLoading className={styleRecipes.loading} type={'spokes'} color={'#1d8845'} width={'3%'} height={'3%'}/> : recipesPerPage.map((recipe) => {
                 return (
                     <div>
                         <Recipe
                             id = {recipe.id}
                             name = {recipe.title}
                             image = {recipe.image}
-                            Diets = {recipe.createinDb ? recipe.Diets = recipe.Diets?.map((diet) => {diet = diet.Name}) : recipe.Diets }
+                            Diets = {recipe.createinDb ? recipe.Diets.map((diet) => diet.Name) : recipe.Diets }
                             healthScore = {recipe.healthScore}
                         />
                     </div>

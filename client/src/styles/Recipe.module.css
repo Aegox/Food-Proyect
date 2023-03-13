@@ -58,6 +58,19 @@
     opacity: 1
 }
 
+.infoContainer i {
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 25px;
+    right: 30px
+}
+
+.infoContainer i:hover {
+    cursor: pointer;
+    color: lightgrey
+}
+
 
 
 .container:hover  .infoContainer {

@@ -7,7 +7,8 @@ import * as actions from "../redux/actions.js";
 const HomeNav = () => {
     const diets = useSelector(store => store.diets);
     const dispatch = useDispatch();
-    const [nameRecipe, setNameRecipe] = useState()
+    const [nameRecipe, setNameRecipe] = useState();
+    const auth = useSelector((store) => store.user.auth)
  
     useEffect(() => {
         dispatch(actions.getDiets())
@@ -20,7 +21,8 @@ const HomeNav = () => {
     
     const handleSearch = () => {
         dispatch(actions.filterByName(nameRecipe))
-    }
+        const input = document.querySelector('#search');
+       }
 
     const handleFilterRecipes = (event) => {
         dispatch(actions.filterRecipes(event.target.value))
@@ -29,6 +31,16 @@ const HomeNav = () => {
     const handleButtonResponsive = () => {
         const nav = document.querySelector('.HomeNav_allContainer__IrzKB')
         nav.classList.toggle(HomeNavStyle.show)
+    }
+
+    const handleUserOptions = () => {
+        const options = document.querySelector('.HomeNav_userOptions__Ul-eU')
+        options.classList.toggle(HomeNavStyle.options)
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
     }
     
 
@@ -91,6 +103,24 @@ const HomeNav = () => {
 
                 </div>
             </div>
+                <div className={HomeNavStyle.user}>
+                    <i onClick={() => handleUserOptions()} class="fa-solid fa-user"></i>
+                </div>
+                <div className={HomeNavStyle.userOptions}>
+                    { localStorage.getItem('token') ? 
+                        <div>
+                            <Link to='/saved'> <h3> <i class="fa-solid fa-bookmark"></i> Saved </h3></Link>
+                            <h3 onClick={() => handleLogout()}> <i class="fa-solid fa-right-from-bracket"></i>Logout </h3>
+                        </div>
+                        :
+                        <div>
+                            <Link to='/session'> <h3> <i class="fa-solid fa-right-from-bracket"></i>Loggin</h3></Link>
+                            <Link to='/register'> <h3> <i class="fa-solid fa-right-from-bracket"></i>Register</h3></Link>
+                        </div>
+
+                    }
+
+                </div>
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import {useEffect , useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import * as actions from "../redux/actions.js";
 import {useNavigate} from "react-router-dom";
+import swal from 'sweetalert';
 
 const CreateRecipe = () => {
     const diets = useSelector((store) => store.diets);
@@ -114,7 +115,12 @@ const CreateRecipe = () => {
             allsteps: [],
             diets: []
         })
-        alert("Your Recipe has ben created")
+        swal({
+            title: "Good job!",
+            text: "Your recipe has been created!",
+            icon: "success",
+            button: "Ok!",
+        });
         navigate("/home")
     }
     

@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #1d8845;
     font-family: 'Bebas Neue';
@@ -9,11 +9,10 @@
     font-size: 21px;
     width: 100%;
     height: 120px;
-    gap: 30px;
     position: sticky;
     z-index: 1;
     top: 0;
-    left:0
+    left:0;
     
 }
 
@@ -30,6 +29,7 @@
 .container img {
     width: 65px;
     height: 60px;
+    padding-left: 30px
     
 }
 
@@ -39,6 +39,7 @@
     gap: 10px
 
 }
+
 
 .containerbutton {
     background-color: white;
@@ -75,7 +76,8 @@
 .orderContainer {
     display: flex;
     flex-direction: row;
-    gap: 50px
+    gap: 35px;
+    padding-right: 150px
 }
 
 .order {
@@ -96,11 +98,56 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 40px
+    gap: 35px
 }
 
 .buttonResponsive {
     display: none
+}
+
+.user i {
+    font-size: 30px;
+    padding-right: 30px
+}
+
+.user i:hover {
+    color: lightgrey;
+    cursor: pointer
+}
+
+.userOptions {
+    display: none;
+    position: absolute;
+    top: 70%;
+    right: 4%;
+    background-color: #1d8845;
+    padding: 20px;
+    border-radius: 10px 0px 10px 10px;
+    box-shadow: 1px 1px 3px black
+}
+
+.userOptions h3 i {
+    font-size: 20px
+}
+
+.userOptions h3 {
+    border-bottom: solid 0.5px;
+    margin-bottom: 6px
+}
+
+
+.userOptions a {
+    text-decoration: none;
+    color: white
+}
+
+.userOptions h3:hover {
+    color: lightgrey;
+    cursor: pointer;
+}
+
+.options {
+    display: block
 }
 
 @media screen and (max-width: 1300px) {

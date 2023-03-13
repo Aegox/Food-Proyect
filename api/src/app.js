@@ -7,6 +7,9 @@ const getRecipes = require("./routes/getRecipes.js");
 const getRecipeDetail = require("./routes/getRecipeDetail.js");
 const getDiets = require("./routes/getDiets.js");
 const makeRecipe = require("./routes/makeRecipe.js");
+const createUser = require("./routes/createUser.js");
+const loginUser = require("./routes/loginUser.js");
+const addSavedRecipe = require("./routes/addSavedRecipe.js");
 
 //Define Server//
 const server = express();
@@ -18,10 +21,10 @@ server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use((req, res, next) => {
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json', 'Authorization');
     res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
@@ -41,6 +44,9 @@ server.use(getRecipes);
 server.use(getRecipeDetail);
 server.use(getDiets);
 server.use(makeRecipe);
+server.use(createUser);
+server.use(loginUser);
+server.use(addSavedRecipe);
 
 //MODULE EXPORTS//
 module.exports = server;

@@ -4,16 +4,23 @@ import {useDispatch} from "react-redux";
 import * as actions from "../redux/actions.js";
 
 const Recipe = (props) =>  {
-    console.log(props)
+    const dispatch = useDispatch();
+
+    const handleAddSaved = async () => {
+       await dispatch(actions.addSavedRecipe(localStorage.getItem('token'), props.id)) 
+    }
+
     return (
         <div>
-            <div className={styleRecipe.container} >
+            <div className={styleRecipe.container}>
+                
                 <h2>{props.name}
                 <br/></h2>
                 <img src={props.image} alt=""/>
                 <div className={styleRecipe.infoContainer}>
+                   <i onClick={() => handleAddSaved()} class="fa-sharp fa-solid fa-bookmark"></i> 
                     {props.Diets.length ?  
-                        <div className={styleRecipe.info}>    
+                        <div className={styleRecipe.info}>   
                             <h1>Diets</h1>
                             <ul>
                                 {props.Diets.map(diet => <li>{diet}</li>)}

@@ -1,0 +1,307 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    background-color: #1d8845;  
+}
+
+.nav a {
+    display: flex;
+    flex-direction: row;
+    font-family: "Bebas Neue";
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    gap: 5px;
+}
+
+.nav h4 {
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+}
+
+.nav a:hover {
+    color: black;
+}
+
+.secondContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%
+    
+}
+
+.createContainer {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 150%;
+    box-shadow: 0px 0px 3px;
+    margin-bottom: 100px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: #1d8845;
+    justify-content: center;
+    align-items: center
+}
+
+.header h1 {
+    font-size: 37px;
+    color: white;
+    font-family: "Bebas Neue";
+    
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.form form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 30px
+}
+
+.formInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    gap: 20px
+}
+
+.formTextarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px
+}
+
+
+.formInput label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    background-color: #1d8845;
+    color: white;
+   }
+
+.formInput input {
+    height: 25px;
+    width: 200%;
+    font-family: "Bebas Neue";
+    font-size: 25px;
+    color: #1d8845;
+    border: 2px solid #1d8845;
+    padding: 2px
+
+}
+
+.formTextarea textarea {
+    font-family: "Bebas Neue";
+    font-size: 25px;
+    color: #1d8845;
+    border: 2px solid #1d8845;
+    padding: 2px;
+    resize: none;
+}
+
+.formTextarea label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    background-color: #1d8845;
+    color: white;
+   }
+
+.formCheckbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px
+}
+
+
+.formCheckbox label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    background-color: #1d8845;
+    color: white;
+   }
+
+.Checkboxes {
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 25px;
+    margin: 30px
+
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px
+}
+
+.checkbox label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 22px;
+    font-family: "Bebas Neue";
+    background-color: #1d8845;
+    color: white;
+    border-radius: 10px
+   }
+
+.formInputSubmit input {
+    height: 60px;
+    width: 200%;
+    font-family: "Bebas Neue";
+    font-size: 27px;
+    background-color: #1d8845;
+    border: 2px solid #1d8845;
+    padding: 2px;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.formInputSubmit input:hover {
+    background-color: lightgrey;
+    border: solid 1px lightgrey;
+    cursor: pointer;
+}
+
+.Error {
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+.ErrorTextarea {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px
+}
+
+.Error input {
+    height: 25px;
+    width: 500px;
+    font-family: "Bebas Neue";
+    font-size: 25px;
+    color: #1d8845;
+    border: 2px solid red;
+    padding: 2px
+}
+
+.Error label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    background-color: red;
+    color: white;
+
+}
+
+.ErrorTextarea textarea {
+    display: block;
+    font-family: "Bebas Neue";
+    font-size: 25px;
+    color: #1d8845;
+    border: 2px solid red;
+    padding: 2px;
+    resize: none;
+}
+
+.ErrorTextarea label {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 25px;
+    font-family: "Bebas Neue";
+    background-color: red;
+    color: white;
+
+}
+
+@media screen and (max-width: 1200px) {
+    .createContainer {
+        width: 100%;
+        
+    }
+    
+    .formInput input {
+        width: 100%
+    }
+    
+    .formTextarea textarea {
+       width: 80% 
+    }
+    
+    .formCheckbox {
+        width: 90%
+    }
+
+    .form form{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Checkboxes {
+        width: 100%
+    }
+
+    .formInputSubmit {
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        align-items: center
+    }
+
+    .Error {
+        flex-direction: column;
+
+    }
+
+    .Error input {
+        width: 90%
+    }
+    
+    .ErrorTextarea textarea {
+        width: 90%
+    }
+
+}
+

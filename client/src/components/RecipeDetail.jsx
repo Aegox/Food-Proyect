@@ -1,20 +1,23 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import styleRecipeDetail from "../styles/RecipeDetail.module.css";
 import * as actions from "../redux/actions.js";
+import ReactLoading from 'react-loading'
 
 const RecipeDetail = () => {
     const recipeDetail = useSelector((store) => store.recipeDetail);
+    const [loading, setLoading] = useState(true)
     const {id} = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(actions.getRecipeDetail(id))
-    }, [])
+        dispatch(actions.getRecipeDetail(id)).then(() => setLoading(false))
+    }, [dispatch])
 
     const handleCleanDetail = () => {
         dispatch(actions.cleanDetail())
+        setLoading(true)
     }
     
     return (
@@ -24,8 +27,12 @@ const RecipeDetail = () => {
                     <h2>{"<"}</h2><h4 onClick={() => handleCleanDetail()}>Back to Home</h4>
                 </Link>
             </div>
-            <div className={styleRecipeDetail.secondContainer}>
-                <div className={styleRecipeDetail.recipeContainer}>
+            
+                <div className={styleRecipeDetail.secondContainer}>
+
+                    {loading ? <ReactLoading className={styleRecipeDetail.loading} type={'spokes'} color={'#1d8845'} height={'3%'} width={'3%'}/> : 
+                 <div className={styleRecipeDetail.recipeContainer}>
+
                     <div>
                         <img src={recipeDetail.image} alt=""/>
                     </div>
@@ -51,13 +58,16 @@ const RecipeDetail = () => {
                         </div>
                         <div>
                             <h2>Diets:</h2>
-                            <ul>{recipeDetail.Diets ? recipeDetail.Diets?.map((diet) => <li>{diet}</li>)
+                            <ul>{recipeDetail.Diets ? recipeDetail.Diets.map((diet) => {
+                                if (diet.hasOwnProperty('Name')) {return (<li>{diet.Name}</li>)}
+                                return (<li>{diet}</li>)}
+                            )
                                 : <h3>the recipe dont contains diets</h3>                
                             }</ul>
                         </div>
                          
                     </div>
-                </div>
+                </div>}
             </div>
         </div>
     )
