@@ -33,6 +33,12 @@
     color: black;
 }
 
+.nav h1 {
+    font-family: "Bebas Neue";
+    color: white;
+    margin-left: 600px
+}
+
 .secondContainer {
     display: flex;
     align-items: center;

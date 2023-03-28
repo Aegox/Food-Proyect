@@ -10,7 +10,6 @@ router.put('/addRecipe', async (req, res) => {
     try {
         const authorization = req.headers.authorization;
         const {recipe} = req.body;
-        console.log(recipe)
         if (authorization) {
             const token = authorization.split(' ')[1];
             const decoded = jwt.verify(token , SECRET_JWT);

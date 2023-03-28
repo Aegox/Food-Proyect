@@ -124,11 +124,6 @@ const CreateRecipe = () => {
         navigate("/home")
     }
     
-    
-    
-    console.log(errors)
-    console.log(newRecipe)
-    
     useEffect(() => {
         dispatch(actions.getDiets())
     }, [])

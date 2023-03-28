@@ -7,8 +7,10 @@ const Recipe = (props) =>  {
     const dispatch = useDispatch();
 
     const handleAddSaved = async () => {
-       await dispatch(actions.addSavedRecipe(localStorage.getItem('token'), props.id)) 
+       await dispatch(actions.addSavedRecipe(localStorage.getItem('token'), props)) 
     }
+
+    console.log(window.location.pathname)
 
     return (
         <div>
@@ -18,7 +20,7 @@ const Recipe = (props) =>  {
                 <br/></h2>
                 <img src={props.image} alt=""/>
                 <div className={styleRecipe.infoContainer}>
-                   <i onClick={() => handleAddSaved()} class="fa-sharp fa-solid fa-bookmark"></i> 
+                    {window.location.pathname === '/saved' ? false: <i onClick={() => handleAddSaved()} class="fa-sharp fa-solid fa-bookmark"></i>}
                     {props.Diets.length ?  
                         <div className={styleRecipe.info}>   
                             <h1>Diets</h1>

@@ -6,6 +6,7 @@ import RecipeDetail from "./components/RecipeDetail.jsx";
 import About from "./components/About.jsx";
 import Session from "./components/Session.jsx";
 import SessionRegister from "./components/SessionRegister.jsx";
+import SavedRecipes from "./components/SavedRecipes.jsx";
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
                 <Route path="/About" element={<About/>}/>
                 <Route path="/session" element={<Session/>}/>
                 <Route path="/register" element={<SessionRegister/>}/>
+                <Route path="/saved" element={<SavedRecipes/>}/>
             </Routes>
         </BrowserRouter>
     )

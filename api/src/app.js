@@ -10,6 +10,7 @@ const makeRecipe = require("./routes/makeRecipe.js");
 const createUser = require("./routes/createUser.js");
 const loginUser = require("./routes/loginUser.js");
 const addSavedRecipe = require("./routes/addSavedRecipe.js");
+const getSavedRecipes = require("./routes/getSavedRecipes.js");
 
 //Define Server//
 const server = express();
@@ -23,10 +24,10 @@ server.use(cookieParser());
 server.use((req, res, next) => {
     res.setHeader('Content-Type', 'application/json', 'Authorization');
     res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  next();
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
 });
 
 // Error catching endware.
@@ -47,6 +48,7 @@ server.use(makeRecipe);
 server.use(createUser);
 server.use(loginUser);
 server.use(addSavedRecipe);
+server.use(getSavedRecipes);
 
 //MODULE EXPORTS//
 module.exports = server;

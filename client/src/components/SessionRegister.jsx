@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import styleSession from '../styles/Session.module.css';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
@@ -7,45 +7,79 @@ import swal from 'sweetalert';
 import {useNavigate} from 'react-router-dom';
 
 const SessionRegister = () => {
-    const [user, setUser] = useState({
-        email: '',
-        password: ''
-    });
-    const [validPassword, setValidPassword] = useState(false);
+    const [user, setUser] = useState({email: '', password: ''});
+    const [repeatPassword, setRepeatPassword] = useState('')
+    const [errors, setErrors] = useState({
+        validEmail: false,
+        validPassword: false
+    })
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/ 
+    
 
     const handleSetInputs = (e) => {
-        console.log(e.target.name, e.target.value)
-        if (e.target.name == 'repeatPassword' && e.target.value == user.password) {
-            setValidPassword(true)
-            console.log(validPassword)
-        };
-
-        setUser({
+        if (e.target.name == 'repeatPassword') {
+            setRepeatPassword(e.target.value)
+            return false
+        }
+         setUser({
             ...user,
             [e.target.name]: e.target.value 
         })
+       
+    }
+
+const validateEmail = () => {
+    if (user.email !== '' && emailRegex.test(user.email)) {
+        setErrors({
+            ...errors,
+            validEmail: false
+        })
+        return false;
+    } 
+    setErrors({
+        ...errors,
+        validEmail: true
+    })
+    return true;
+}
+
+    const validatePassword = () => {
+        if (!(user.password == repeatPassword) || repeatPassword == '') {
+            setErrors({
+                ...errors,
+                validPassword: true
+            })
+            return true
+        }
+        setErrors({
+            ...errors,
+            validPassword: false
+        })
+        return false
     }
 
     const handleCreateUser = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        if (!validateEmail() && !validatePassword()) {
         dispatch(actions.createUser(user));
         setUser({
             email: '',
             password: ''
         });
-       swal({
-            title: "Good job!",
-            text: "Your user has been created!",
-            icon: "success",
-            button: "Ok!",
+        swal({
+            title: 'Good job!',
+            text: 'Your user has been created!',
+            icon: 'success',
+            button: 'Ok!'
         });
-        navigate("/session")
-        
+        navigate('/session');
     }
+  };
 
-    console.log(user)
+    console.log(errors, user, repeatPassword)
+    
 
     return (
         <div className={styleSession.container}>
@@ -54,11 +88,15 @@ const SessionRegister = () => {
                 <h1>Register Acccount</h1>
                 <label>Email</label>
                 <input name='email' type='text' onChange={(e) => handleSetInputs(e)} placeholder='write your email'/>
+                {errors.validEmail ? <label>the email must be a valid email</label> : false}
+
                 <label>Password</label>
                 <input name='password' type='password' onChange={(e) => handleSetInputs(e)} placeholder='write your password'/>
                 <label>Repeat Password</label>
                 <input name='repeatPassword' type='password' onChange={(e) => handleSetInputs(e)} placeholder='write your password'/>
+                {errors.validPassword ? <label>must be equal to password</label>: false}
                 <button onClick={(e) => handleCreateUser(e)}>Register</button>
+                <Link to='/register'>you have an account? - Login now</Link>
             </form>
         </div>
     )

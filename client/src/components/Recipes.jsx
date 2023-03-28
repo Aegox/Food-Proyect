@@ -6,8 +6,7 @@ import styleRecipes from "../styles/Recipes.module.css";
 import Paginated from "./Paginated.jsx";
 import ReactLoading from 'react-loading';
 
-const Recipes = () => {
-    const recipes = useSelector((store) => store.allRecipes);
+const Recipes = ({recipes}) => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true)
     const [actualPage, setActualPage] = useState(1);
@@ -34,7 +33,7 @@ const Recipes = () => {
                     <div>
                         <Recipe
                             id = {recipe.id}
-                            name = {recipe.title}
+                            name = {recipe.name ? recipe.name : recipe.title}
                             image = {recipe.image}
                             Diets = {recipe.createinDb ? recipe.Diets.map((diet) => diet.Name) : recipe.Diets }
                             healthScore = {recipe.healthScore}

@@ -7,7 +7,7 @@ const addSavedRecipe = async (email, recipe) => {
                 email
             }
         });
-        if (user.savedRecipes === null) {
+         if (user.savedRecipes === null) {
             await User.update({savedRecipes: [recipe]},
                 {
                     where: {
@@ -15,6 +15,10 @@ const addSavedRecipe = async (email, recipe) => {
                 }
             })
         }
+        if (user.savedRecipes.find(recipeDB => recipeDB.id === recipe.id)) {
+            return 'Recipe has been added'
+        }
+       
         await User.update({savedRecipes: [...user.savedRecipes, recipe]},
                 {
                     where: {

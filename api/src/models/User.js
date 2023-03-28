@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING(1234)
         },
         savedRecipes: {
-            type: DataTypes.ARRAY(DataTypes.STRING(1234)),
+            type: DataTypes.ARRAY(DataTypes.JSON),
         }
     },
         {timestamps: false}

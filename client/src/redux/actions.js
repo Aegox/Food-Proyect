@@ -9,6 +9,7 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const FILTER_BY_NAME = "FILTER_BY_NAME";
 export const LOGIN_USER = "LOGIN_USER";
 export const ADD_SAVED_RECIPE = "ADD_SAVED_RECIPE";
+export const GET_SAVED_RECIPES = "GET_SAVED_RECIPES";
 
 export const getDiets = () => {
     return async (dispatch) => {
@@ -127,6 +128,25 @@ export const addSavedRecipe = (token, recipe) => {
         })
             .then(response => response.json())
             .then((response) => dispatch({type: ADD_SAVED_RECIPE, payload: response}))
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
+    };
+
+}
+
+export const getSavedRecipes = (token) => {
+    console.log(token)
+     return async (dispatch) => {
+        let url = `http://localhost:3001/savedRecipes`;
+        return fetch(url, {
+        method: "GET",
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then((response) => dispatch({type: GET_SAVED_RECIPES, payload: response.recipes}))
             .then(response => console.log(response))
             .catch(error => console.log(error))
     };

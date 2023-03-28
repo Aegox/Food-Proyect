@@ -25,23 +25,22 @@ const Session = () => {
             setError(false)
             navigate('/home')
         }
-        else {
-           setError(true)
-        }
-
     },[auth.auth])
+
     
     const handleInputs = (e) => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
         })
+        setError(false)
     }    
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(actions.loginUser({user}))
         setUser({ email: '', password: ''});
+        setError(true)
     }
     
     return (
